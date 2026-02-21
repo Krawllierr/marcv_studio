@@ -26,6 +26,9 @@ MarcV Studio : T.VYZ/
 ├── lib/
 │   ├── constants.ts
 │   └── form.ts
+├── scripts/
+│   ├── start-server.js
+│   └── zip-for-easypanel.sh
 ├── public/
 ├── .env.example
 ├── .eslintrc.json

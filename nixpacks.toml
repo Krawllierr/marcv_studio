@@ -8,8 +8,8 @@ cmds = ["npm install --ignore-scripts"]
 cmds = ["npm run build"]
 
 [start]
-# Easypanel sets PORT; Next.js must listen on it
-cmd = "node ./node_modules/next/dist/bin/next start -p ${PORT:-3000}"
+# Uses scripts/start-server.js: reads process.env.PORT, binds 0.0.0.0
+cmd = "node ./scripts/start-server.js"
 
 [variables]
 NODE_ENV = "production"
