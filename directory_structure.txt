@@ -30,6 +30,8 @@ MarcV Studio : T.VYZ/
 │   ├── start-server.js
 │   └── zip-for-easypanel.sh
 ├── public/
+├── .dockerignore
+├── Dockerfile
 ├── .env.example
 ├── .eslintrc.json
 ├── .gitignore
