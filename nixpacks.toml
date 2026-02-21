@@ -1,0 +1,15 @@
+# Nixpacks config for Next.js (Easypanel)
+# Explicit build/start so Nixpacks does not need to scan all files
+
+[phases.install]
+cmds = ["npm install --ignore-scripts"]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+# Easypanel sets PORT; Next.js must listen on it
+cmd = "node ./node_modules/next/dist/bin/next start -p ${PORT:-3000}"
+
+[variables]
+NODE_ENV = "production"

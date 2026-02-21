@@ -1,0 +1,40 @@
+MarcV Studio : T.VYZ/
+├── app/
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── BentoGrid.tsx
+│   ├── Cases.tsx
+│   ├── Features.tsx
+│   ├── FloatingCTA.tsx
+│   ├── Footer.tsx
+│   ├── Header.tsx
+│   ├── Hero.tsx
+│   ├── HeroMiniForm.tsx
+│   ├── HowItWorks.tsx
+│   ├── LeadForm.tsx
+│   ├── LeadMagnetModal.tsx
+│   ├── LeadMagnetTrigger.tsx
+│   ├── Packages.tsx
+│   ├── ProposalModal.tsx
+│   ├── ProofSocial.tsx
+│   ├── FAQ.tsx
+│   ├── ScrollReveal.tsx
+│   ├── WhatIs.tsx
+│   └── WhoIsFor.tsx
+├── lib/
+│   ├── constants.ts
+│   └── form.ts
+├── public/
+├── .env.example
+├── .eslintrc.json
+├── .gitignore
+├── README.md
+├── directory_structure.txt
+├── next-env.d.ts
+├── next.config.js
+├── package.json
+├── postcss.config.js
+├── tailwind.config.ts
+└── tsconfig.json

@@ -1,0 +1,14 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0A0A0B"/>
+  <rect x="60" y="60" width="1080" height="510" rx="20" fill="#111215" stroke="#D4A853" stroke-opacity="0.45"/>
+  <rect x="112" y="126" width="214" height="34" rx="17" fill="#D4A853" fill-opacity="0.18"/>
+  <text x="126" y="149" font-family="Arial, sans-serif" font-size="15" fill="#D4A853">MarcV Studio</text>
+  <text x="112" y="248" font-family="Arial, sans-serif" font-size="64" font-weight="700" fill="#FAFAFA">T.VYZ</text>
+  <text x="112" y="304" font-family="Arial, sans-serif" font-size="34" fill="#FAFAFA">Interactive Unreal Engine Archviz</text>
+  <text x="112" y="350" font-family="Arial, sans-serif" font-size="34" fill="#FAFAFA">for Sales Galleries</text>
+  <text x="112" y="414" font-family="Arial, sans-serif" font-size="23" fill="#C0C0C0">Sell properties before they are built.</text>
+  <text x="112" y="447" font-family="Arial, sans-serif" font-size="23" fill="#C0C0C0">Touchscreen-ready walkthroughs, sun study, unit selection.</text>
+  <circle cx="932" cy="208" r="110" fill="#D4A853" fill-opacity="0.08"/>
+  <circle cx="1010" cy="287" r="150" fill="#D4A853" fill-opacity="0.06"/>
+  <circle cx="1080" cy="360" r="180" fill="#D4A853" fill-opacity="0.04"/>
+</svg>
