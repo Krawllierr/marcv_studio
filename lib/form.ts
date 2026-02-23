@@ -8,6 +8,7 @@ export type LeadFormData = {
   phone: string;
   email: string;
   file?: File;
+  source?: string;
 };
 
 export type LeadMagnetFormData = {
@@ -33,6 +34,9 @@ export async function submitLeadForm(
   formData.append("email", data.email);
   if (data.file) {
     formData.append("file", data.file);
+  }
+  if (data.source) {
+    formData.append("source", data.source);
   }
 
   try {
