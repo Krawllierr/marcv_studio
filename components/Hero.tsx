@@ -96,7 +96,6 @@ export default function Hero() {
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200"
                 alt="Interactive archviz preview"
                 fill
-                priority
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover opacity-50 z-0 pointer-events-none hero-media-image"
               />

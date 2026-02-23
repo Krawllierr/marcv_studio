@@ -1,0 +1,3 @@
+{"sessionId":"9fd6fb","location":"start-server.js","timestamp":1771865544637,"message":"start-server entry","data":{"PORT":"3000","__dirname":"/Users/krawllier/Dev/MarcV Studio : T.VYZ/scripts"},"hypothesisId":"H1"}
+{"sessionId":"9fd6fb","location":"start-server.js","timestamp":1771865544652,"message":"paths resolved","data":{"port":"3000","cwd":"/Users/krawllier/Dev/MarcV Studio : T.VYZ","nextBin":"/Users/krawllier/Dev/MarcV Studio : T.VYZ/node_modules/next/dist/bin/next","nextBinExists":true},"hypothesisId":"H1"}
+{"sessionId":"9fd6fb","location":"start-server.js","timestamp":1771865544653,"message":"spawn called","data":{"pid":32624},"hypothesisId":"H3"}

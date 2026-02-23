@@ -1,48 +1,61 @@
-"use client";
+\"use client\";
 
-import { useState } from "react";
-import Link from "next/link";
-import { FORM_WEBHOOK_URL, LEGAL } from "@/lib/constants";
-import { submitLeadForm } from "@/lib/form";
-import ParallaxScene from "./ParallaxScene";
+import { useState } from \"react\";
+import Link from \"next/link\";
+import { CONTACT, FORM_WEBHOOK_URL, LEGAL } from \"@/lib/constants\";
+import { submitLeadForm } from \"@/lib/form\";
+import ParallaxScene from \"./ParallaxScene\";
 
-const ROLES = ["Developer", "Sales", "Marketing", "Architect", "Broker", "Other"];
-const PROJECT_TYPES = ["Launch", "Subdivision", "Interiors", "Other"];
-const TIMELINES = ["30 days", "60 days", "90 days", "Flexible"];
+const ROLES = [\"Developer\", \"Sales\", \"Marketing\", \"Architect\", \"Broker\", \"Other\"];
+const PROJECT_TYPES = [\"Launch\", \"Subdivision\", \"Interiors\", \"Other\"];
+const TIMELINES = [\"30 days\", \"60 days\", \"90 days\", \"Flexible\"];
 
 export default function LeadForm() {
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<\"idle\" | \"loading\" | \"success\" | \"error\">(\"idle\");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!FORM_WEBHOOK_URL) {
-      setStatus("error");
+      setStatus(\"error\");
+      setErrorMessage(
+        `Form is temporarily unavailable. Please email us at ${CONTACT.email}.`
+      );
       return;
     }
     const form = e.currentTarget;
     const formData = new FormData(form);
-    const fileValue = formData.get("file");
+    const fileValue = formData.get(\"file\");
     const file = fileValue instanceof File && fileValue.size > 0 ? fileValue : undefined;
-    setStatus("loading");
+    setStatus(\"loading\");
+    setErrorMessage(null);
     const result = await submitLeadForm(
       {
-        name: String(formData.get("name") || ""),
-        company: String(formData.get("company") || ""),
-        role: String(formData.get("role") || ""),
-        cityState: String(formData.get("cityState") || ""),
-        projectType: String(formData.get("projectType") || ""),
-        launchTimeline: String(formData.get("launchTimeline") || ""),
-        phone: String(formData.get("phone") || ""),
-        email: String(formData.get("email") || ""),
+        name: String(formData.get(\"name\") || \"\"),
+        company: String(formData.get(\"company\") || \"\"),
+        role: String(formData.get(\"role\") || \"\"),
+        cityState: String(formData.get(\"cityState\") || \"\"),
+        projectType: String(formData.get(\"projectType\") || \"\"),
+        launchTimeline: String(formData.get(\"launchTimeline\") || \"\"),
+        phone: String(formData.get(\"phone\") || \"\"),
+        email: String(formData.get(\"email\") || \"\"),
         file,
+        source: \"lead-form\",
       },
       FORM_WEBHOOK_URL
     );
     if (result.ok) {
-      setStatus("success");
+      setStatus(\"success\");
       form.reset();
     } else {
-      setStatus("error");
+      if (process.env.NODE_ENV !== \"production\") {
+        // eslint-disable-next-line no-console
+        console.error(\"Lead form submission failed:\", result.error);
+      }
+      setStatus(\"error\");
+      setErrorMessage(
+        result.error || `Error. Try again or email us at ${CONTACT.email}.`
+      );
     }
   };
 
@@ -212,7 +225,7 @@ export default function LeadForm() {
           )}
           {status === "error" && (
             <p role="alert" className="text-red-400 text-sm">
-              Error. Try again or email us.
+              {errorMessage || "Error. Try again or email us."}
             </p>
           )}
 
