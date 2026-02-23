@@ -6,9 +6,8 @@ export const NAV_LINKS = [
   { href: "#contact", label: "Contact" },
 ] as const;
 
-export const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || "";
-export const LEAD_MAGNET_ENDPOINT =
-  process.env.NEXT_PUBLIC_LEAD_MAGNET_ENDPOINT || "";
+export const FORM_WEBHOOK_URL =
+  process.env.NEXT_PUBLIC_FORM_WEBHOOK_URL || "";
 
 export const CONTACT = {
   email: "marcv_studio.3d@outlook.com",

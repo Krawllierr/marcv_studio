@@ -59,7 +59,7 @@ export async function submitLeadMagnet(
     const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
-      body: JSON.stringify({ email: data.email }),
+      body: JSON.stringify({ email: data.email, source: "lead_magnet" }),
     });
     return { ok: res.ok, error: res.ok ? undefined : "Submission failed" };
   } catch (e) {

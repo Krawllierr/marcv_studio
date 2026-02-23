@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { FORM_ENDPOINT, LEGAL } from "@/lib/constants";
+import { FORM_WEBHOOK_URL, LEGAL } from "@/lib/constants";
 import { submitLeadForm } from "@/lib/form";
 import ParallaxScene from "./ParallaxScene";
 
@@ -15,7 +15,7 @@ export default function LeadForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!FORM_ENDPOINT) {
+    if (!FORM_WEBHOOK_URL) {
       setStatus("error");
       return;
     }
@@ -36,7 +36,7 @@ export default function LeadForm() {
         email: String(formData.get("email") || ""),
         file,
       },
-      FORM_ENDPOINT
+      FORM_WEBHOOK_URL
     );
     if (result.ok) {
       setStatus("success");

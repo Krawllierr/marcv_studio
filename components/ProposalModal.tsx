@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
+import { FORM_WEBHOOK_URL } from "@/lib/constants";
 
 type Props = {
   isOpen: boolean;
@@ -58,8 +59,7 @@ export default function ProposalModal({ isOpen, onClose, packageName }: Props) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-    if (!endpoint) {
+    if (!FORM_WEBHOOK_URL) {
       setStatus("error");
       return;
     }
@@ -68,7 +68,7 @@ export default function ProposalModal({ isOpen, onClose, packageName }: Props) {
       Object.entries(formData).forEach(([k, v]) => fd.append(k, v));
       fd.append("package", packageName);
       fd.append("source", "proposal-modal");
-      const res = await fetch(endpoint, {
+      const res = await fetch(FORM_WEBHOOK_URL, {
         method: "POST",
         body: fd,
         headers: { Accept: "application/json" },

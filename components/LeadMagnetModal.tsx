@@ -2,7 +2,7 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import { X } from "lucide-react";
-import { LEAD_MAGNET_ENDPOINT } from "@/lib/constants";
+import { FORM_WEBHOOK_URL } from "@/lib/constants";
 import { submitLeadMagnet } from "@/lib/form";
 
 type Props = {
@@ -37,7 +37,7 @@ export default function LeadMagnetModal({ isOpen, onClose }: Props) {
     e.preventDefault();
     if (!email.trim()) return;
     setStatus("loading");
-    const result = await submitLeadMagnet({ email: email.trim() }, LEAD_MAGNET_ENDPOINT);
+    const result = await submitLeadMagnet({ email: email.trim() }, FORM_WEBHOOK_URL);
     setStatus(result.ok ? "success" : "error");
     if (result.ok) setEmail("");
   };

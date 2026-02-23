@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { FORM_WEBHOOK_URL } from "@/lib/constants";
 
 const PROJECT_TYPES = [
   "Launch / new development",
@@ -25,8 +26,7 @@ export default function HeroMiniForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const endpoint = process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT;
-    if (!endpoint) {
+    if (!FORM_WEBHOOK_URL) {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
       return;
     }
@@ -39,7 +39,7 @@ export default function HeroMiniForm() {
       formData.append("email", email);
       formData.append("phone", phone);
       formData.append("source", "hero-mini-form");
-      const res = await fetch(endpoint, {
+      const res = await fetch(FORM_WEBHOOK_URL, {
         method: "POST",
         body: formData,
         headers: { Accept: "application/json" },
