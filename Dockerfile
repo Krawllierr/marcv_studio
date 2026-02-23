@@ -33,4 +33,5 @@ COPY --from=builder /app/next.config.js ./
 
 EXPOSE 80
 
-CMD ["node", "scripts/start-server.js"]
+# Run Next directly so container logs show "Ready on..." (no wrapper)
+CMD ["node", "node_modules/next/dist/bin/next", "start", "-H", "0.0.0.0", "-p", "80"]
