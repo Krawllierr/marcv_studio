@@ -1,0 +1,4 @@
+{"sessionId":"4cf4b4","location":"LeadForm.tsx:handleSubmit","message":"form submit","data":{"webhookUrlLength":71,"branch":"proceed"},"timestamp":1771868001428,"hypothesisId":"H1"}
+{"sessionId":"4cf4b4","location":"LeadForm.tsx:before submitLeadForm","message":"calling submitLeadForm","data":{"endpointLength":71},"timestamp":1771868001435,"hypothesisId":"H3"}
+{"sessionId":"4cf4b4","location":"form.ts:submitLeadForm","message":"submitLeadForm entry","data":{"endpointLength":71,"isEmpty":false},"timestamp":1771868001436,"hypothesisId":"H3"}
+{"sessionId":"4cf4b4","location":"form.ts:before fetch","message":"about to fetch","data":{"endpointLength":71},"timestamp":1771868001437,"hypothesisId":"H3"}
