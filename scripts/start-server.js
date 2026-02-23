@@ -6,7 +6,7 @@
 const { spawn } = require('child_process');
 const path = require('path');
 
-const port = String(process.env.PORT || '3002');
+const port = String(process.env.PORT || '80');
 const nextBin = path.join(__dirname, '..', 'node_modules', 'next', 'dist', 'bin', 'next');
 
 const child = spawn(
