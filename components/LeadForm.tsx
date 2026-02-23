@@ -16,6 +16,11 @@ export default function LeadForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // #region agent log
+    const webhookLen = typeof FORM_WEBHOOK_URL === "string" ? FORM_WEBHOOK_URL.length : 0;
+    const branch = !FORM_WEBHOOK_URL ? "early_return" : "proceed";
+    fetch('http://127.0.0.1:7608/ingest/88e86f95-ae6a-4466-9ee7-33e10967ec1d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4cf4b4'},body:JSON.stringify({sessionId:'4cf4b4',location:'LeadForm.tsx:handleSubmit',message:'form submit',data:{webhookUrlLength:webhookLen,branch},timestamp:Date.now(),hypothesisId:'H1'})}).catch(()=>{});
+    // #endregion
     if (!FORM_WEBHOOK_URL) {
       setStatus("error");
       setErrorMessage(
@@ -29,6 +34,9 @@ export default function LeadForm() {
     const file = fileValue instanceof File && fileValue.size > 0 ? fileValue : undefined;
     setStatus("loading");
     setErrorMessage(null);
+    // #region agent log
+    fetch('http://127.0.0.1:7608/ingest/88e86f95-ae6a-4466-9ee7-33e10967ec1d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4cf4b4'},body:JSON.stringify({sessionId:'4cf4b4',location:'LeadForm.tsx:before submitLeadForm',message:'calling submitLeadForm',data:{endpointLength:FORM_WEBHOOK_URL.length},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
+    // #endregion
     const result = await submitLeadForm(
       {
         name: String(formData.get("name") || ""),

@@ -19,6 +19,10 @@ export async function submitLeadForm(
   data: LeadFormData,
   endpoint: string
 ): Promise<{ ok: boolean; error?: string }> {
+  // #region agent log
+  const endpointLen = typeof endpoint === "string" ? endpoint.length : 0;
+  fetch('http://127.0.0.1:7608/ingest/88e86f95-ae6a-4466-9ee7-33e10967ec1d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4cf4b4'},body:JSON.stringify({sessionId:'4cf4b4',location:'form.ts:submitLeadForm',message:'submitLeadForm entry',data:{endpointLength:endpointLen,isEmpty:!endpoint},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
+  // #endregion
   if (!endpoint) {
     return { ok: false, error: "Form endpoint not configured" };
   }
@@ -40,6 +44,9 @@ export async function submitLeadForm(
   }
 
   try {
+    // #region agent log
+    fetch('http://127.0.0.1:7608/ingest/88e86f95-ae6a-4466-9ee7-33e10967ec1d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4cf4b4'},body:JSON.stringify({sessionId:'4cf4b4',location:'form.ts:before fetch',message:'about to fetch',data:{endpointLength:endpoint.length},timestamp:Date.now(),hypothesisId:'H3'})}).catch(()=>{});
+    // #endregion
     const res = await fetch(endpoint, {
       method: "POST",
       body: formData,
@@ -47,6 +54,9 @@ export async function submitLeadForm(
     });
     return { ok: res.ok, error: res.ok ? undefined : "Submission failed" };
   } catch (e) {
+    // #region agent log
+    fetch('http://127.0.0.1:7608/ingest/88e86f95-ae6a-4466-9ee7-33e10967ec1d',{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Session-Id':'4cf4b4'},body:JSON.stringify({sessionId:'4cf4b4',location:'form.ts:submitLeadForm catch',message:'fetch threw',data:{errName:e instanceof Error ? e.name : String(e),errMsg:e instanceof Error ? e.message : String(e).slice(0,200)},timestamp:Date.now(),hypothesisId:'H4'})}).catch(()=>{});
+    // #endregion
     return { ok: false, error: "Network error" };
   }
 }
